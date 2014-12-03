@@ -435,6 +435,7 @@ public abstract class Connection extends Conferenceable {
         public void onConferenceMergeFailed(Connection c) {}
         public void onExtrasChanged(Connection c, Bundle extras) {}
         public void onPhoneAccountChanged(Connection c, PhoneAccountHandle pHandle) {}
+        public void onCdmaConnectionTimeReset(Connection c) {}
     }
 
     /**
@@ -1597,6 +1598,16 @@ public abstract class Connection extends Conferenceable {
             }
         }
         fireOnConferenceableConnectionsChanged();
+    }
+
+    /**
+       *@hide
+       * Resets the cdma connection time.
+       */
+    public final void resetCdmaConnectionTime() {
+        for (Listener l : mListeners) {
+            l.onCdmaConnectionTimeReset(this);
+        }
     }
 
     /**

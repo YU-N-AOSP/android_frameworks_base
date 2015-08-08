@@ -2537,6 +2537,7 @@ public class NetworkPolicyManagerService extends INetworkPolicyManager.Stub {
     private void setInterfaceQuota(String iface, long quotaBytes) {
         try {
             mNetworkManager.setInterfaceQuota(iface, quotaBytes);
+            NetPluginDelegate.setQuota(iface, quotaBytes);
         } catch (IllegalStateException e) {
             Log.wtf(TAG, "problem setting interface quota", e);
         } catch (RemoteException e) {

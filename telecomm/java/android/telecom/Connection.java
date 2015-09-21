@@ -434,6 +434,7 @@ public abstract class Connection extends Conferenceable {
         public void onConferenceStarted() {}
         public void onConferenceMergeFailed(Connection c) {}
         public void onExtrasChanged(Connection c, Bundle extras) {}
+        public void onPhoneAccountChanged(Connection c, PhoneAccountHandle pHandle) {}
     }
 
     /**
@@ -1096,6 +1097,7 @@ public abstract class Connection extends Conferenceable {
     private Conference mConference;
     private ConnectionService mConnectionService;
     private Bundle mExtras;
+    private PhoneAccountHandle mPhoneAccountHandle = null;
 
     /**
      * Create a new Connection.
@@ -1602,6 +1604,23 @@ public abstract class Connection extends Conferenceable {
      */
     public final List<Conferenceable> getConferenceables() {
         return mUnmodifiableConferenceables;
+    }
+
+    /**
+     * @hide.
+     */
+    public final void setPhoneAccountHandle(PhoneAccountHandle pHandle) {
+        mPhoneAccountHandle = pHandle;
+        for (Listener l : mListeners) {
+            l.onPhoneAccountChanged(this, pHandle);
+        }
+    }
+
+    /**
+     * @hide.
+     */
+    public final PhoneAccountHandle getPhoneAccountHandle() {
+        return mPhoneAccountHandle;
     }
 
     /**

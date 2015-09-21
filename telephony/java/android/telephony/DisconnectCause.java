@@ -248,6 +248,11 @@ public class DisconnectCause {
     public static final int PROTOCOL_ERROR_UNSPECIFIED = 89;
     public static final int INTERWORKING_UNSPECIFIED = 90;
 
+    /** EMERGENCY call failed with temporary fail cause */
+    public static final int EMERGENCY_TEMP_FAILURE         = 91;
+    /** EMERGENCY call failed with permanent fail cause */
+    public static final int EMERGENCY_PERM_FAILURE         = 92;
+
     /** Private constructor to avoid class instantiation. */
     private DisconnectCause() {
         // Do nothing.

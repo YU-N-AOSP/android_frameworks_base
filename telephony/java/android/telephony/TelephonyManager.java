@@ -3424,13 +3424,7 @@ public class TelephonyManager {
 
     /** @hide */
     public int getSimCount() {
-        // FIXME Need to get it from Telephony Dev Controller when that gets implemented!
-        // and then this method shouldn't be used at all!
-        if(isMultiSimEnabled()) {
-            return 2;
-        } else {
-            return 1;
-        }
+        return getPhoneCount();
     }
 
     /**

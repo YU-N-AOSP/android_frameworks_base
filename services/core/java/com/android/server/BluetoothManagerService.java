@@ -1720,6 +1720,11 @@ class BluetoothManagerService extends IBluetoothManager.Stub {
                 sendBleStateChanged(prevState, newState);
             }
 
+            if( newState == BluetoothAdapter.STATE_TURNING_ON
+               && prevState == BluetoothAdapter.STATE_BLE_ON) {
+                mEnable = true;
+            }
+
             if (isStandardBroadcast) {
                 if (prevState == BluetoothAdapter.STATE_BLE_ON) {
                     // Show prevState of BLE_ON as OFF to standard users

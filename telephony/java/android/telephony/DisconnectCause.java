@@ -187,6 +187,9 @@ public class DisconnectCause {
      */
     public static final int CDMA_ALREADY_ACTIVATED         = 49;
 
+    /** call failed due to LTE to 3G/2G handover not feasible */
+    public static final int HO_NOT_FEASIBLE = 50;
+
     public static final int NO_CIRCUIT_AVAIL = 51;
     public static final int NO_ROUTE_TO_DESTINAON = 52;
     public static final int OPERATOR_DETERMINED_BARRING = 53;
